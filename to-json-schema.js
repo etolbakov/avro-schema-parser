@@ -129,6 +129,10 @@ const additionalAttributesMapping = (typeInput, avroDefinition, jsonSchemaInput)
 };
 
 function validateAvroSchema(avroDefinition) {
+  // don't need to use the output from parsing the
+  //  avro definition - we're just using this as a
+  //  validator as this will throw an exception if
+  //  there are any problems with the definition
   avsc.Type.forSchema(avroDefinition);
 }
 
