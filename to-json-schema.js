@@ -140,6 +140,8 @@ async function convertAvroToJsonSchema(avroDefinition, isTopLevel) {
   const jsonSchema = {};
   const isUnion = Array.isArray(avroDefinition);
 
+  validateAvroSchema(avroDefinition);
+
   if (isUnion) {
     jsonSchema.oneOf = [];
     let nullDef = null;
@@ -154,8 +156,6 @@ async function convertAvroToJsonSchema(avroDefinition, isTopLevel) {
 
     return jsonSchema;
   }
-
-  validateAvroSchema(avroDefinition);
 
   // Avro definition can be a string (e.g. "int")
   // or an object like { type: "int" }
